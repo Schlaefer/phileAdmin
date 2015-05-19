@@ -101,7 +101,7 @@ class Plugin extends AbstractPlugin
           'appPath' => $this->getPluginPath(),
           'appBasePath' => $appBasePath,
           'appBaseUrl' => $router->url($appBasePath),
-          'assetBaseUrl' => $router->url('plugins/siezi/phileAdmin'),
+          'assetBaseUrl' => $router->url('lib'),
           'baseUrl' => $router->url('plugins/siezi/phileAdmin')
         ];
     }
