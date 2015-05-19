@@ -1,4 +1,10 @@
 {
+  "name": "siezi/phile-admin",
+  "type": "phile-plugin",
+  "license": "MIT",
+  "description": "Extendable Admin Backend Framework for PhileCMS",
+  "homepage": "https://github.com/Schlaefer/phileAdmin",
+  "keywords": ["phile", "admin", "backend"],
   "require": {
     "silex/silex": "^1.2",
     "symfony/security": "^2.6",
