@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-
 return [
     /**
      * admin user and password
