@@ -1,0 +1,49 @@
+{% extends "layouts/default.twig" %}
+
+{% block breadcrump %}
+    <li class="active">{{ 'siezi.phileAdmin.login.login'|trans }}</li>
+{% endblock %}
+
+{% block content %}
+    {% if generatePassword is defined %}
+        <div class="page-header">
+            <h1>{{ 'siezi.phileAdmin.login.password.generate'|trans }}</h1>
+        </div>
+        <p>
+            {{ 'siezi.phileAdmin.login.password.generate.exp'|trans }}
+        </p>
+        <form action="" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="password" class="form-control"
+                       placeholder="{{ 'siezi.phileAdmin.login.password'|trans }}"
+                       value="{{ password }}"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary"
+                       value="{{ 'siezi.phileAdmin.login.password.generate'|trans }}"/>
+            </div>
+            {% if hash is defined %}
+                <div class="form-group">
+                    &nbsp;
+                    <code>{{ hash }}</code>
+                </div>
+            {% endif %}
+        </form>
+    {% else %}
+        <form action="login_check" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="_username" class="form-control"
+                       placeholder="{{ 'siezi.phileAdmin.login.name'|trans }}"
+                       value="{{ last_username }}"/>
+            </div>
+            <div class="form-group">
+                <input type="password" name="_password" class="form-control"
+                       placeholder="{{ 'siezi.phileAdmin.login.password'|trans }}"
+                       value=""/>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary"/>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
