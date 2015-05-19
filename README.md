@@ -53,7 +53,7 @@ See `config.php`.
 
 The backend is a essentially [Silex] app and a plugin repository containing admin plugins. On a callback you create a new plugin, configure it and add it to the repository. Then you create Silex routes and controllers (extending `AdminController`).
 
-The Cache plugin shows a simple example.
+See the [cache plugin](https://github.com/Schlaefer/phileAdminCache) for a simple plugin implementation.
 
 
 [Bootstrap]: http://getbootstrap.com/
