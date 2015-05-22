@@ -61,6 +61,13 @@ abstract class AdminController implements ControllerProviderInterface
             $this->app['twig']->getLoader()->addLoader($loader);
         }
 
+        $defaults = [
+            'layout' => [
+                'title' => preg_replace('/\\.[^.\\s]{3,4}$/', '', $template)
+            ]
+        ];
+        $vars = array_replace_recursive($defaults, $vars);
+
         return $this->app['twig']->render($template, $vars);
     }
 
