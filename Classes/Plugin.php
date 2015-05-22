@@ -89,7 +89,9 @@ class Plugin extends AbstractPlugin
     protected function completeConfig()
     {
         $this->config += [
-          'contentDir' => CONTENT_DIR
+          'contentDir' => CONTENT_DIR,
+          'contentExt' => CONTENT_EXT,
+          'storageDir' => STORAGE_DIR,
         ];
     }
 

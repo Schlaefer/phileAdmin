@@ -2,7 +2,7 @@
 
 namespace Phile\Plugin\Siezi\PhileAdmin\Lib;
 
-use Phile\Plugin\Siezi\PhileAdmin\Controller\LoginController;
+use Phile\Plugin\Siezi\PhileAdmin\Lib\Helper\StringHelper;
 use Phile\Plugin\Siezi\PhileAdmin\Lib\Helper\UrlHelper;
 use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
@@ -82,10 +82,9 @@ class AppFactory
           'twig.path' => $app['plugin']->getPluginPath('views')
         ]);
 
-        $app['adminPlugin_factory'] = function() use ($app) {
+        $app['adminPlugin_factory'] = function($app) {
             return new AdminPlugin($app);
         };
-
     }
 
     protected function initRoutes($app)
@@ -131,6 +130,7 @@ class AppFactory
     protected function initHelpers($app)
     {
         $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
+            $twig->addExtension(new StringHelper($app));
             $twig->addExtension(new UrlHelper($app));
             return $twig;
         }));
