@@ -6,6 +6,7 @@
   "homepage": "https://github.com/Schlaefer/phileAdmin",
   "keywords": ["phile", "admin", "backend"],
   "require": {
+    "phile-cms/phile": "^1.5",
     "silex/silex": "^1.2",
     "symfony/security": "^2.6",
     "symfony/twig-bridge": "^2.6",

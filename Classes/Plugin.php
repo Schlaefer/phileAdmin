@@ -27,7 +27,7 @@ class Plugin extends AbstractPlugin
     protected $events = [
       'config_loaded' => 'onConfigLoaded',
       'after_resolve_page' => 'startApp',
-      'siezi.phileAdmin.beforeAppRun' => 'bootstrapStartPage'
+      'siezi.phileAdmin.beforeAppRun' => 'registerStartPagePlugin'
     ];
 
     public function getConfig($key)
@@ -45,7 +45,7 @@ class Plugin extends AbstractPlugin
         return $this->settings[$key];
     }
 
-    protected function bootstrapStartPage($eventData)
+    protected function registerStartPagePlugin($eventData)
     {
         $adminPlugin = $eventData['app']['adminPlugin_factory'];
         $adminPlugin
@@ -100,7 +100,6 @@ class Plugin extends AbstractPlugin
         $router = new Router();
         $appBasePath = '/' . trim($this->settings['pageId'], '/');
         $this->settings += [
-          'appPath' => $this->getPluginPath(),
           'appBasePath' => $appBasePath,
           'appBaseUrl' => $router->url($appBasePath),
           'assetBaseUrl' => $router->url('lib'),
