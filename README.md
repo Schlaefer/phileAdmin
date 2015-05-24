@@ -4,6 +4,8 @@
 
 A small admin backend framework for PhileCMS based on [Silex] (symfony components) and [Bootstrap]. Takes care of the backend boilerplate (login/logout, templating, localization) and makes it easy to develop admin plugins.
 
+[Find plugins using it on Phile’s plugin page.](https://github.com/PhileCMS/Phile/wiki/%5BCOMMUNITY%5D-Plugins#admin--backend)
+
 ## Installation
 
 ### 1.1 Installation (composer) ###
@@ -25,10 +27,11 @@ A small admin backend framework for PhileCMS based on [Silex] (symfony component
 
 ### 2. Activation
 
-After you have installed the plugin. You need to add the following line to your `config.php` file:
+After you have installed the plugin you activate it by adding the following line to your `config.php` file:
 
-
-	$config['plugins']['siezi\\phileAdmin'] = ['active' => true];
+```php
+$config['plugins']['siezi\\phileAdmin'] = ['active' => true];
+```
 
 The default backend URL is `http://…/<phile-root>/backend/`
 
@@ -51,7 +54,7 @@ See `config.php`.
 
 ## Plugin Development ##
 
-The backend is a essentially [Silex] app and a plugin repository containing admin plugins. On a callback you create a new plugin, configure it and add it to the repository. Then you create Silex routes and controllers (extending `AdminController`).
+The backend is essentially a [Silex] app and a admin-plugin repository containing admin-plugins. On a callback in a standard Phile Plugin-class you create a new admin-plugin, configure it and add it to the repository. Then you create Silex routes and controllers (extending `AdminController`).
 
 See the [cache plugin](https://github.com/Schlaefer/phileAdminCache) for a simple plugin implementation.
 
