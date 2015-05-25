@@ -58,6 +58,7 @@ The backend is essentially a [Silex] app and a admin-plugin repository containin
 
 See the [cache plugin](https://github.com/Schlaefer/phileAdminCache) for a simple plugin implementation.
 
+Enable the debug mode in the `config.php` when you develop (disable template cache, …).
 
 [Bootstrap]: http://getbootstrap.com/
 [Silex]: http://silex.sensiolabs.org/
