@@ -79,7 +79,7 @@ class AppFactory
 
         $app->register(new TwigServiceProvider(), [
           'twig.options' => ['cache' => $app['debug'] ? false : CACHE_DIR],
-          'twig.path' => $app['plugin']->getPluginPath('views')
+          'twig.path' => $app['plugin']->getPluginPath('templates')
         ]);
 
         $app['adminPlugin_factory'] = function($app) {
