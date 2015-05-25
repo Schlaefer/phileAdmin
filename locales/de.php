@@ -7,6 +7,7 @@ return [
   'siezi.phileAdmin.login.logout' => 'Logout',
   'siezi.phileAdmin.login.frontend' => 'Frontseite',
   'siezi.phileAdmin.login.name' => 'Name',
+  'siezi.phileAdmin.login.submit' => 'Einloggen',
   'siezi.phileAdmin.login.password' => 'Passwort',
   'siezi.phileAdmin.login.password.generate' => 'Hash Erzeugen',
   'siezi.phileAdmin.login.password.generate.exp' => 'Sie müssen einen Hash erzeugen und als Admin Password setzen.',
