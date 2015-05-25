@@ -5,6 +5,7 @@ return [
   'siezi.phileAdmin.core.title' => 'Phile-Admin',
   'siezi.phileAdmin.login.login' => 'Login',
   'siezi.phileAdmin.login.logout' => 'Logout',
+  'siezi.phileAdmin.login.frontend' => 'Front-End',
   'siezi.phileAdmin.login.name' => 'Name',
   'siezi.phileAdmin.login.password' => 'Password',
   'siezi.phileAdmin.login.password.generate' => 'Generate Hash',
