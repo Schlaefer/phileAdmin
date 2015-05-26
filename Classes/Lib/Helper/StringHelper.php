@@ -2,8 +2,12 @@
 
 namespace Phile\Plugin\Siezi\PhileAdmin\Lib\Helper;
 
+use Cocur\Slugify\Slugify;
+
 class StringHelper extends AppHelper
 {
+
+    private static $slug;
 
     public function getName()
     {
@@ -17,21 +21,17 @@ class StringHelper extends AppHelper
         ];
     }
 
-    public static function slug($text) {
-        // replace non letter or digits by -
-        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
-        // trim
-        $text = trim($text, '-');
-        // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        // lowercase
-        $text = strtolower($text);
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
-        if (empty($text)) {
-            return 'n-a';
+    public static function slug($text, $length = null)
+    {
+        if (empty(static::$slug)) {
+            static::$slug = new Slugify();
         }
-        return $text;
+        $slug = static::$slug->slugify($text);
+        if ($length) {
+            $slug = substr($slug, 0, $length);
+        }
+
+        return $slug;
     }
 
 }
