@@ -10,6 +10,7 @@
     "silex/silex": "^1.2",
     "symfony/security": "2.6",
     "symfony/twig-bridge": "^2.6",
+    "symfony/options-resolver": "2.6.*",
     "twitter/bootstrap": "^3.3",
     "symfony/form": "^2.6",
     "symfony/translation": "^2.6",
