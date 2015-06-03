@@ -16,14 +16,9 @@ A small admin backend framework for PhileCMS based on [Silex] (symfony component
 }
 ```
 
-<!--
-
 ### 1.2 Installation (Download)
 
-* Install [Phile](https://github.com/PhileCMS/Phile)
-* Clone this repo into `plugins/siezi/phileMarkdownEditor`
-
--->
+[Download the latest archive from the release page](https://github.com/Schlaefer/phileAdmin/releases) into `plugins/siezi/phileAdmin`.
 
 ### 2. Activation
 
