@@ -6,9 +6,12 @@ use Phile\Core\Event;
 use Phile\Core\Router;
 use Phile\Plugin\AbstractPlugin;
 use Phile\Plugin\Siezi\PhileAdmin\Lib\AdminPluginCollection;
+use Phile\Plugin\Siezi\PhileAdmin\Lib\PluginVendorLoadingTrait;
 
 class Plugin extends AbstractPlugin
 {
+
+    use PluginVendorLoadingTrait;
 
     /**
      * @var array Phile config
@@ -21,13 +24,14 @@ class Plugin extends AbstractPlugin
     protected $plugins;
 
     protected $settings = [
-      'debug' => false,
+        'debug' => false,
+        'baseUrl' => 'plugins/siezi/phileAdmin'
     ];
 
     protected $events = [
-      'config_loaded' => 'onConfigLoaded',
-      'after_resolve_page' => 'startApp',
-      'siezi.phileAdmin.beforeAppRun' => 'registerStartPagePlugin'
+        'config_loaded' => 'onConfigLoaded',
+        'after_resolve_page' => 'startApp',
+        'siezi.phileAdmin.beforeAppRun' => 'registerStartPagePlugin'
     ];
 
     public function getConfig($key)
@@ -49,9 +53,9 @@ class Plugin extends AbstractPlugin
     {
         $adminPlugin = $eventData['app']['adminPlugin_factory'];
         $adminPlugin
-          ->setLocalesFolder($this->getPluginPath('locales'))
-          ->setMenu('siezi.phileAdmin.start.title', '/start')
-          ->setRoutes(['/start' => new AdminStart()]);
+            ->setLocalesFolder($this->getPluginPath('locales'))
+            ->setMenu('siezi.phileAdmin.start.title', '/start')
+            ->setRoutes(['/start' => new AdminStart()]);
         $eventData['plugins']->add($adminPlugin);
     }
 
@@ -62,6 +66,11 @@ class Plugin extends AbstractPlugin
 
     protected function startApp($eventData)
     {
+        $local = $this->initLocalVendorLoading($this->getPluginPath('vendor/autoload.php'));
+        if ($local) {
+            $this->settings['assetBaseUrl'] = (new Router)->url($this->settings['baseUrl']);
+        }
+
         $current = rtrim($eventData['pageId'], '/') . '/';
         $apiUrl = $this->settings['pageId'];
         if (strpos($current, $apiUrl) !== 0) {
@@ -89,9 +98,9 @@ class Plugin extends AbstractPlugin
     protected function completeConfig()
     {
         $this->config += [
-          'contentDir' => CONTENT_DIR,
-          'contentExt' => CONTENT_EXT,
-          'storageDir' => STORAGE_DIR,
+            'contentDir' => CONTENT_DIR,
+            'contentExt' => CONTENT_EXT,
+            'storageDir' => STORAGE_DIR,
         ];
     }
 
@@ -100,10 +109,10 @@ class Plugin extends AbstractPlugin
         $router = new Router();
         $appBasePath = '/' . trim($this->settings['pageId'], '/');
         $this->settings += [
-          'appBasePath' => $appBasePath,
-          'appBaseUrl' => $router->url($appBasePath),
-          'assetBaseUrl' => $router->url('lib'),
-          'baseUrl' => $router->url('plugins/siezi/phileAdmin')
+            'appBasePath' => $appBasePath,
+            'appBaseUrl' => $router->url($appBasePath),
+            'assetBaseUrl' => $router->url('lib'),
+            'baseUrl' => $router->url($this->settings['baseUrl'])
         ];
     }
 

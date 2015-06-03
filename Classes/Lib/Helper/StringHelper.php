@@ -2,12 +2,10 @@
 
 namespace Phile\Plugin\Siezi\PhileAdmin\Lib\Helper;
 
-use Cocur\Slugify\Slugify;
+use Cake\Utility\Inflector;
 
 class StringHelper extends AppHelper
 {
-
-    private static $slug;
 
     public function getName()
     {
@@ -23,10 +21,7 @@ class StringHelper extends AppHelper
 
     public static function slug($text, $length = null)
     {
-        if (empty(static::$slug)) {
-            static::$slug = new Slugify();
-        }
-        $slug = static::$slug->slugify($text);
+        $slug = Inflector::slug($text);
         if ($length) {
             $slug = substr($slug, 0, $length);
         }
